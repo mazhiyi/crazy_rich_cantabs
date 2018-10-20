@@ -18,14 +18,14 @@ def event_random_forest_model(dims=None):
     pass
 
 def event_conv_model(dims=None):
-    optimizer = optimizers.SGD(lr=0.1)#, clipnorm=1.)
+    optimizer = optimizers.SGD(lr=0.001, clipnorm=1.)
 
     model = Sequential()
-    # model.add(Conv1D(18, 32, activation='relu', input_dim=dims[0]))
-    model.add(Conv1D(18, 2, activation='relu', input_shape=(2, 1)))
+    # model.add(Conv1D(17, 17, activation='relu', input_dim=dims[0]))
+    model.add(Conv1D(17, 5, activation='relu', input_shape=(dims[0], 1)))
     # model.add(MaxPooling1D(2))
     model.add(Flatten())
-    model.add(Dense(units=dims[1], activation='linear', input_dim=18))
+    model.add(Dense(units=dims[1], activation='linear', input_dim=17))
 
     model.compile(optimizer=optimizer, loss='mse')
 
