@@ -46,6 +46,16 @@ def get_event_data(dimension, year, quarter=None):
             X_dict[row['ticker']][EVENT_KEYS_MAPPING[x]] += 1
     return pd.DataFrame.from_dict(X_dict,orient='index')
 
+def _get_price_table(year, quarter=None):
+    quarter_dates = ['12-31','03-31', '06-30', '09-30']
+    start_year = year
+    if quarter == 0:
+        start_year -= 1
+    start_dt = datetime.datetime.strptime(str(start_year) + '-' + quarter_dates[quarter], "%Y-%m-%d")
+    end_dt = datetime.datetime.strptime(str(year) + '-' + quarter_dates[(quarter+1)%4], "%Y-%m-%d")
+    table = quandl.get_table('SHARADAR/SF1', calendardate=list(daterange(start_dt, end_dt)), paginate=True)
+    return table
+
 def API(year, quarter, dimension='ARQ'):
 
     df = _get_price_table(year, quarter)
