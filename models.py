@@ -14,7 +14,4 @@ def demo_simple_dense(train_X, train_y):
     model = Sequential()
     model.add(Dense(units=1, activation='linear', input_dim=train_X.shape[1]))
     model.compile(optimizer=optimizer, loss='mse')
-
-    print('training')
-    model.fit(train_X, train_y, epochs=100)
     return model
