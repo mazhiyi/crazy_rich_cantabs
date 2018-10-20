@@ -25,7 +25,7 @@ def main():
 
     # Train the model 
     print('training')    
-    model.fit(train_X, train_y, epochs=3)
+    model.fit(train_X, train_y, epochs=100)
 
     # Evaluate the model 
     print('evaluation loss')
