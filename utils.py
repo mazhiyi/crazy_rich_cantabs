@@ -1,3 +1,4 @@
+import numpy as np
 from datetime import timedelta, date
 
 EVENT_LIST = [11, 12, 13, 14, 15, 21, 22, 23, 24, 25, 26, 32, 33, 34, 
@@ -14,4 +15,5 @@ def daterange(date1, date2):
     for n in range(int((date2 - date1).days)+1):
         yield str(date1 + timedelta(n))
     
-
+def expand_for_conv(X):
+    return np.array(X).reshape(X.shape[0], X.shape[1], 1)
