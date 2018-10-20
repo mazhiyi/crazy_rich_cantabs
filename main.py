@@ -1,13 +1,14 @@
-from keras import optimizers
-
 import dataset
 import models
 
 # An example training
-train_X, train_y = dataset.get_demo_simple_dense_data()
-optimizer = optimizers.SGD(lr=0.1, clipnorm=1.)
-model = models.demo_simple_dense(layer_dims=[train_X.shape[1], 1], activations=['linear'], optimizer=optimizer)
-print('training')
-model.fit(train_X, train_y, epochs=100)
+# 
+
+# Only need to change the functions for the following two lines 
+# to train a different model using different dataset
+train_X, train_y, test_X, test_y = dataset.get_demo_simple_dense_data()
+model = models.demo_simple_dense(train_X, train_y)
+
+
 print('evaluation loss')
-print(model.evaluate(train_X, train_y))
+print(model.evaluate(test_X, test_y))
