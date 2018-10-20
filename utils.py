@@ -13,3 +13,5 @@ def get_event_keys_mapping(event_list=EVENT_LIST):
 def daterange(date1, date2):
     for n in range(int((date2 - date1).days)+1):
         yield str(date1 + timedelta(n))
+    
+

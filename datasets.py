@@ -44,7 +44,7 @@ def get_event_data(dimension, year, quarter=None):
         events = [int(x) for x in row['eventcodes'].split('|')]
         for x in events:
             X_dict[row['ticker']][EVENT_KEYS_MAPPING[x]] += 1
-    return X_dict
+    return pd.DataFrame.from_dict(X_dict,orient='index')
 
 
 

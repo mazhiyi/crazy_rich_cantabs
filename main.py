@@ -1,12 +1,13 @@
 import datasets
 import models
+from sklearn.model_selection import train_test_split
 
 # An example training
 # 
 
 # Define dataset and model architecture
 train_X, train_y, test_X, test_y = datasets.get_demo_simple_dense_data()
-model = models.demo_simple_dense(train_X, train_y)
+model = models.demo_simple_dense([2, 1])
 
 # Train the model 
 print('training')
