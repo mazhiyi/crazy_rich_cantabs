@@ -46,7 +46,7 @@ def get_event_data(dimension, year, quarter=None):
             X_dict[row['ticker']][EVENT_KEYS_MAPPING[x]] += 1
     return pd.DataFrame.from_dict(X_dict,orient='index')
 
-def API(year, quarter, dimension = 'ARQ'):
+def API(year, quarter, dimension='ARQ'):
 
     df = _get_price_table(year, quarter)
 
