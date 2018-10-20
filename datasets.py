@@ -46,5 +46,31 @@ def get_event_data(dimension, year, quarter=None):
             X_dict[row['ticker']][EVENT_KEYS_MAPPING[x]] += 1
     return pd.DataFrame.from_dict(X_dict,orient='index')
 
+def API(year, quarter, dimension = 'ARQ'):
+
+    df = _get_price_table(year, quarter)
+
+    df = df[df['dimension'] == dimension]
+    df = df[['ticker', 'price', 'calendardate']]
+    df.dropna(inplace = True)
+    df = df.reset_index(drop=True)
+
+    names = df.ticker.unique()
+    delta = {}
+         
+    for i, row in df.iterrows():
+        if i == 0:
+            dummy_name = row['ticker']
+            p2 = row['price']
+        else:
+            if dummy_name == row['ticker']:
+                p1 = row['price']
+                ratio = (p2 - p1)/p1
+                delta[dummy_name] = ratio
+                dummy_name = row['ticker']
+            else:
+                dummy_name = row['ticker']
+                p2 = row['price']
+    return delta
 
 
