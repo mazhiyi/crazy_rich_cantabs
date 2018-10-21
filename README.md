@@ -11,5 +11,5 @@ This project uses Machine Learning to analysis the impacts of various events to 
 To run a model, do `python main.py`
 
 ## Development
-Prepare dataset in `dataset.py`
+Prepare dataset in `dataset.py`  
 Prepare the corresponding model in `models.py`

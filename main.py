@@ -44,6 +44,8 @@ def main():
     print(cf)
     tn, fp, fn, tp = cf.ravel()
     print('tn: {}, fp: {}, fn: {}, tp: {}'.format(tn, fp, fn, tp))
+    print('precision: ', tp/(tp+fp))
+    print('recall: ', tp/(tp+fn))
     print('accuracy')
     print(sum(predicted_increase==actual_increase)/len(predicted_increase))
     
