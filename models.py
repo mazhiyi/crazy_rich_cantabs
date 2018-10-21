@@ -5,6 +5,10 @@ from keras.models import Sequential
 from keras.layers import Dense, Conv1D, MaxPooling1D, Flatten
 from keras import optimizers
 
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.datasets import make_classification
+
+
 def demo_simple_dense(dims=None):
     assert len(dims)==2, 'only give input and output dimensions'
     optimizer = optimizers.SGD(lr=0.1, clipnorm=1.)
@@ -14,8 +18,14 @@ def demo_simple_dense(dims=None):
     model.compile(optimizer=optimizer, loss='mse')
     return model
 
-def event_random_forest_model(dims=None):
-    pass
+# def event_random_forest_model(dims=None):
+#     X, y = make_classification(n_samples=1000, n_features=4,
+#                                n_informative=2, n_redundant=0,
+#                                random_state=0, shuffle=False)
+#     model = RandomForestClassifier(n_estimators=100, max_depth=2,
+#                                  random_state=0)
+
+#     return model 
 
 def event_conv_model(dims=None):
     optimizer = optimizers.SGD(lr=0.01, clipnorm=1.)
